@@ -124,7 +124,7 @@ public class Program
                 file.Name = ReadString(nameBuffer, 0);
 
                 f.Read(intBuffer, 0x0, 4);
-                file.Size = BitConverter.ToUInt32(intBuffer) * 2;
+                file.Size = BitConverter.ToUInt32(intBuffer) * 0x20;
 
                 f.Read(intBuffer, 0x0, 4);
                 file.DataOffset = BitConverter.ToUInt32(intBuffer);
