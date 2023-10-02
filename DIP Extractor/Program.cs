@@ -83,7 +83,6 @@ public class Program
 
         HandleEntry(f, dip, root);
         GenerateFiles(root, dip, f, outDir);
-        Console.ReadLine();
     }
 
     public static void HandleEntry(FileStream f, DIP dip, Dir root)
