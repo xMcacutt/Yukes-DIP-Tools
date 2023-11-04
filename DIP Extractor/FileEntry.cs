@@ -11,5 +11,7 @@ namespace DIP_Extractor
         public string Name;
         public uint Size;
         public uint DataOffset;
+        public string Path;
+        public int NameIndex;
     }
 }
