@@ -6,18 +6,17 @@ using DIP_Extractor;
 
 public class Program
 {
-    static string _path;
-    static bool _run = true;
+    static string _path = "";
 
     public static void Main(string[] args)
     {
-        while(_run)
+        while(true)
         {
             Console.Clear();
-            Console.WriteLine("DIP Extractor for The DOG Island PS2");
+            Console.WriteLine("DIP Tools for The Yukes PS2 Games");
 
             Console.WriteLine("Would you like to exract or repack   (e/r)");
-            string input = Console.ReadLine();
+            string? input = Console.ReadLine();
             while (!string.Equals(input, "r", StringComparison.CurrentCultureIgnoreCase)
                 && !string.Equals(input, "e", StringComparison.CurrentCultureIgnoreCase))
             {
@@ -38,7 +37,7 @@ public class Program
                 }
 
                 Console.WriteLine("Please provide an output directory");
-                string outDir = Console.ReadLine().Replace("\"", " ");
+                string? outDir = Console.ReadLine().Replace("\"", " ");
                 while (!Directory.Exists(outDir))
                 {
                     Console.WriteLine("Path was invalid");
@@ -61,7 +60,7 @@ public class Program
                 }
 
                 Console.WriteLine("Please provide an output file name");
-                string outFileName = Console.ReadLine();
+                string? outFileName = Console.ReadLine();
                 Console.WriteLine("Repacking...");
                 var dirInfo = new DirectoryInfo(_path);
                 var parentDir = dirInfo.Parent.FullName;
