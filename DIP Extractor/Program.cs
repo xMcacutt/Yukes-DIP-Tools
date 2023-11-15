@@ -60,7 +60,7 @@ public class Program
                 }
 
                 Console.WriteLine("Please provide an output file name");
-                string? outFileName = Console.ReadLine();
+                string? outFileName = Console.ReadLine().Replace("\"", "");
                 Console.WriteLine("Repacking...");
                 var dirInfo = new DirectoryInfo(_path);
                 var parentDir = dirInfo.Parent.FullName;

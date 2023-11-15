@@ -107,7 +107,11 @@ namespace DIP_Extractor
             dip.FileDataLength = (uint)fileDataStream.Length;
             dip.EntryListOffset = 0x20;
             dip.NameTableOffset = dip.EntryListOffset + dip.EntryListLength;
-            dip.FileDataOffset = dip.NameTableOffset + dip.NameTableLength + 0x514;
+            dip.FileDataOffset = dip.NameTableOffset + dip.NameTableLength;
+            uint multiple = 0x800;
+            uint end = (dip.FileDataOffset + multiple - 1) / multiple * multiple;
+            uint paddingCount = end - dip.FileDataOffset;
+            dip.FileDataOffset = end;
 
             MemoryStream headerStream = new();
             headerStream.Write(BitConverter.GetBytes(dip.EntryListLength));
@@ -125,7 +129,7 @@ namespace DIP_Extractor
             outStream.Write(entryListStream.ToArray());
             entryListStream.Close();
             outStream.Write(nameTableStream.ToArray());
-            outStream.Write(new byte[1300]);
+            outStream.Write(new byte[paddingCount]);
             nameTableStream.Close();
             outStream.Write(fileDataStream.ToArray());
             fileDataStream.Close();
